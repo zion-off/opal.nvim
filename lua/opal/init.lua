@@ -263,7 +263,7 @@ end
 
 -- Health watcher ------------------------------------------------------------
 
-local function watch_start()
+local function watch_start(silent)
   if watch_job_id then
     vim.notify("Opal: health watcher already running", vim.log.levels.WARN)
     return
@@ -327,7 +327,9 @@ local function watch_start()
     watch_job_id = nil
     vim.notify("Opal: failed to start health watcher", vim.log.levels.ERROR)
   else
-    vim.notify("Opal: health watcher started", vim.log.levels.INFO)
+    if not silent then
+      vim.notify("Opal: health watcher started", vim.log.levels.INFO)
+    end
   end
 end
 
@@ -497,7 +499,7 @@ function M.setup(opts)
   refresh_service_cache()
 
   if M.config.watch then
-    watch_start()
+    watch_start(true)
   end
 
   vim.api.nvim_create_autocmd("VimLeavePre", {
