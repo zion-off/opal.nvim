@@ -467,7 +467,7 @@ function M.setup(opts)
       { prefix, group = "Opal", icon = { icon = "󰗀", color = "purple" } },
 
       -- TUI
-      { prefix .. "c", M.tui, desc = "Launch TUI" },
+      { prefix .. "t", M.tui, desc = "Launch TUI" },
 
       -- Global commands (uppercase)
       { prefix .. "B", M.build, desc = "Build all services", icon = { icon = "󰣖", color = "orange" } },

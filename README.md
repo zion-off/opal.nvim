@@ -89,7 +89,7 @@ all keybindings are under the configured prefix (default `<leader>O`).
 
 | key | description                 |
 | --- | --------------------------- |
-| `c` | launch TUI                  |
+| `t` | launch TUI                  |
 | `s` | status                      |
 | `B` | build all                   |
 | `U` | up all                      |
