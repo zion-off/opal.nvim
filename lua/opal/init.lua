@@ -3,6 +3,7 @@ local M = {}
 M.config = {
   prefix = "<leader>O",
   watch = false,
+  workspace = nil,
 }
 
 local cached_services = {}
@@ -264,6 +265,10 @@ end
 -- Health watcher ------------------------------------------------------------
 
 local function watch_start(silent)
+  if M.config.workspace and vim.fn.getcwd() ~= M.config.workspace then
+    return
+  end
+
   if watch_job_id then
     vim.notify("Opal: health watcher already running", vim.log.levels.WARN)
     return

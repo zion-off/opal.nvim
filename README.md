@@ -62,6 +62,10 @@ require("opal").setup({
 
   -- auto-start the container health watcher on setup
   watch = false,
+
+  -- only start the health watcher when neovim's cwd matches this path
+  -- if nil, the watcher runs regardless of cwd
+  workspace = nil,
 })
 ```
 
@@ -125,6 +129,8 @@ when enabled, you get `vim.notify` messages for:
 - containers recovering to healthy
 
 enable it on startup with `watch = true` in your config, or toggle it on demand with `<leader>Ow` / `:Opal watch`.
+
+if you only want the watcher active in a specific project, set `workspace` to that directory's absolute path. the watcher will not start if neovim's cwd doesn't match.
 
 ## highlight groups
 
